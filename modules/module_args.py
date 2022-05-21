@@ -1,5 +1,6 @@
 """ class for input task arguments"""
 import argparse
+
 class Arguments:
     """Argeparse  arguments class """
 
@@ -19,17 +20,21 @@ class Arguments:
             args.date,
             args.post]
 
-    def get_template(self):
+
+class GetArguments:
+
+    @staticmethod
+    def get_template():
         """get the template from the user input"""
         template = Arguments()
         return template.show_arguments_in_script()[0]
-
-    def get_date(self):
+    @staticmethod
+    def get_date():
         """get the date from the user input"""
         date = Arguments()
         return date.show_arguments_in_script()[1]
-
-    def get_post(self):
+    @staticmethod
+    def get_post():
         """ get the post email template -- underconstruction"""
         post = Arguments()
         return post.show_arguments_in_script()[2]
