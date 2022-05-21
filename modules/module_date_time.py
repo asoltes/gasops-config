@@ -9,14 +9,14 @@ class DateTime:
     """class for time """
 
     @staticmethod
-    def show_current_time(self):
+    def show_current_time():
         """show philippines local and current time"""
         ph_current_time = datetime.now(pytz.timezone('Asia/Manila'))
         pht = ph_current_time.strftime("%Y-%m-%d %H:%M:%S %Z")
         return pht
 
     @staticmethod
-    def show_current_time_cdt(self):
+    def show_current_time_cdt():
         """US/CHICAGO local and current time"""
         chicago_current_time_real = datetime.now(pytz.timezone('US/Central'))
         cdt = chicago_current_time_real.strftime("%Y-%m-%d %H:%M:%S %Z")
