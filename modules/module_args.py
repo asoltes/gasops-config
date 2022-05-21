@@ -3,8 +3,8 @@ import argparse
 
 class Arguments:
     """Argeparse  arguments class """
-
-    def show_arguments_in_script(self):
+    @staticmethod
+    def show_arguments_in_script():
         """This the argumentparser configurations!"""
         parser = argparse.ArgumentParser(description='Gasops Config Generator by Andrew Soltes')
         parser.add_argument("-t","--template",metavar="",
