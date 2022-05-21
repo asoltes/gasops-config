@@ -3,7 +3,6 @@ scripts/configs/__init__.py
 __pycache__/
 *.py[cod]
 *$py.class
-.pylintrc
 
 # C extensions
 *.so
