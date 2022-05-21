@@ -6,8 +6,6 @@ from modules.module_date_time import DateTime
 
 class GenerateTemplate:
     """Super/Parent Class to Generate the template"""
-    def __init__(self):
-        """Instance variable function """
 
     @staticmethod
     def es_migration():
