@@ -1,0 +1,44 @@
+
+# get the snaphots for the specific date
+GET _snapshot/siem/{{default_date_input}}*
+
+# check if the indicies for specific date is in the cluster 
+GET _cat/indices/siem_events_ng_0_day_{{formatted_date}}
+
+# restore the S3 snapshot to S3
+POST _snapshot/siem/{{default_date_input}}@CHANGE_ME_WITH_THE_SNAPSHOT_ID/_restore
+{
+   "indices":"siem_events_ng_*_day_{{formatted_date}}",
+   "index_settings":{
+      "routing":{
+         "allocation":{
+            "require":{
+               "tier":""
+            }
+         }
+      }
+   }
+}
+
+# get cluster status
+GET /_cluster/health?pretty
+
+# get the migration status
+GET _ultrawarm/migration/_status?v
+
+# get the diskUsedPercent and heapPercent via dev console
+GET /_cat/nodes?v&h=name,role,master,load_1m,load_5m,load_15m,cpu,disk.total,disk.used,heapPercent,diskUsedPercent&s=diskUsedPercent:desc
+
+# migrate the indices from hot to warm
+{% for x in range (0,20) -%}
+POST _ultrawarm/migration/siem_events_ng_{{x}}_day_{{formatted_date}}/_warm
+{% endfor %}
+
+# login to ansible to check the status of indices
+curl -s "http://localhost:9200/_cat/indices?v&s=rep,index" | grep {{formatted_date}}
+
+# login to ansible and login on sigproxy sshme emea sigproxy to check diskUsedPercent and heapPercent
+curl -sXGET "http://localhost:9200/_cat/nodes?v&h=name,role,master,load_1m,load_5m,load_15m,cpu,disk.total,disk.used,diskUsedPercent,heapPercent&s=heapPercent:desc"
+
+# for more info follow this wiki
+https://wiki.trustwave.com/display/GAS/HOWTO+-+Restore+Elasticsearch+S3+snapshots+to+OpenSearch
