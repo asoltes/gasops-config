@@ -10,15 +10,9 @@ scripts.args_task.scripts.argument_task_for_gasops and add to return list
 from scripts.template_scripts import GenerateTemplate
 from modules.module_args import GetArguments
 
-#getting the template argument value
-# argument = GetArguments()
-template = GetArguments.get_template()
-#generate the template
-# show_template = GenerateTemplate()
-
 def main():
     """calling the functions created in script directory"""
-    if  template == "es_migration":
+    if  GetArguments.get_template() == "es_migration":
         print(GenerateTemplate.es_migration())
     else:
         print ("Argument provided not available! Kindly contact andrew.soltes@trustwave.com")
