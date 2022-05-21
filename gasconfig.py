@@ -1,10 +1,10 @@
 #
 """
 update workflows
-1. add the argsparse arguments in the
-scripts.args_task.scripts.argument_task_for_gasops and add to return list
-2. create a .py script for new templates for more clean and robust env
-3. add a .j2 template under the templates folder
+1. adding new template need to be added in the modules/module_args.py
+2. add to GetArgument if needed to access to outside
+3. add new method to GenerateTemplate class for jinja2 parser
+4. call the new method to gasconfig.py
 """
 
 from scripts.template_scripts import GenerateTemplate
