@@ -22,7 +22,7 @@ class Arguments:
 
 
 class GetArguments:
-
+    """ Get Arguments from the Argument class """
     @staticmethod
     def get_template():
         """get the template from the user input"""
