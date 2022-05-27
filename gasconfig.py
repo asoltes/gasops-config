@@ -8,7 +8,7 @@ update workflows
 """
 
 from scripts.template_scripts import GenerateConfigTemplate, GenerateBugzillaTemplate
-from modules.module_args import GetArguments, Arguments
+from modules.module_args import GetArguments
 
 def main():
     match GetArguments.get_template():
@@ -22,7 +22,7 @@ def main():
             print (GenerateBugzillaTemplate.change_decomm())
 
         case unknown_command:
-            print(f"{str(unknown_command).title()} Template not supported! contact andrew.soltes@trustwave.com to request for template")
+            print(f"{str(unknown_command).title()} Template not supported!")
 
 if __name__=="__main__":
     main()
