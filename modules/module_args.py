@@ -13,12 +13,19 @@ class Arguments:
                             help="input date format <year-month-day>")
         parser.add_argument("-p","--post",metavar="",
                             help="post change email")
+        parser.add_argument("-jrt","--jira_ticket",metavar="",
+                            help="Jira ticket")
+        parser.add_argument("-srv","--servers",metavar="",
+                            help="Linux/Windows Server")
+
         args = parser.parse_args()
 
         return [
             args.template,
             args.date,
-            args.post]
+            args.post,
+            args.jira_ticket,
+            args.servers]
 
 
 class GetArguments:
@@ -26,15 +33,24 @@ class GetArguments:
     @staticmethod
     def get_template():
         """get the template from the user input"""
-        template = Arguments()
-        return template.show_arguments_in_script()[0]
+        return Arguments.show_arguments_in_script()[0]
+
     @staticmethod
     def get_date():
         """get the date from the user input"""
-        date = Arguments()
-        return date.show_arguments_in_script()[1]
+        return Arguments.show_arguments_in_script()[1]
+
     @staticmethod
-    def get_post():
-        """ get the post email template -- underconstruction"""
-        post = Arguments()
-        return post.show_arguments_in_script()[2]
+    def get_consumer_group():
+        """Get the consumer group"""
+        return Arguments.show_arguments_in_script()[2]
+
+    @staticmethod
+    def get_jira_ticket():
+        """Get the Jira Ticket Number"""
+        return Arguments.show_arguments_in_script()[3]
+
+    # @staticmethod
+    # def get_servers(*kwargs):
+    #     """Get the host for decom"""
+    #     return [Arguments.show_arguments_in_script()[4]]

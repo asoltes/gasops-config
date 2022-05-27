@@ -7,15 +7,22 @@ update workflows
 4. call the new method to gasconfig.py
 """
 
-from scripts.template_scripts import GenerateTemplate
-from modules.module_args import GetArguments
+from scripts.template_scripts import GenerateConfigTemplate, GenerateBugzillaTemplate
+from modules.module_args import GetArguments, Arguments
 
 def main():
-    """calling the functions created in script directory"""
-    if  GetArguments.get_template() == "es_migration":
-        print(GenerateTemplate.es_migration())
-    else:
-        print ("Argument provided not available! Kindly contact andrew.soltes@trustwave.com")
+    match GetArguments.get_template():
+        case "es_migration":
+            print(GenerateConfigTemplate.es_migration())
+
+        case "post":
+            print (GenerateBugzillaTemplate.change_post())
+
+        case "decomm":
+            print (GenerateBugzillaTemplate.change_decomm())
+
+        case unknown_command:
+            print(f"{str(unknown_command).title()} Template not supported! contact andrew.soltes@trustwave.com to request for template")
 
 if __name__=="__main__":
     main()

@@ -1,0 +1,67 @@
+
+Summary:
+Decommission [[add a server name / application]]
+
+Impact:
+None as the servers to decommission are no longer in use
+
+[[add a list of servers here]]
+
+Deployment Plan:
+https://jira.trustwave.com/browse/GASOPSTICK-{{jira_ticket}}
+
+Post Change Validation Plan:
+N/A
+
+Rollback Plan:
+- Confirm servers are properly decommissioned and removed from DNS and associated firewall, NAT rules, etc. as per https://wiki.trustwave.com/display/GAS/HOWTO+Decommission+a+server.
+
+Business Need:
+WFR/SR has been EOLed, the following operational servers that were only used by WFR/SR are ready be decommissioned
+
+Additional Comments:
+N/A
+
+Date and time for implementing change:
+Thursday, {{pht}} and (Wednesday, {{cdt}})
+
+PRIOR TESTING
+-------------
+Type of testing done: C
+a) Lab environment
+b) Previously implemented
+c) Other/None (explain below)
+Explanation: Standard decommission procedure.
+
+BACKUP
+------
+Type of backup: B
+a) Special backup will be run prior to the change
+b) Regular environment backup
+c) Other/None (explain below)
+Explanation: No special backup process required.
+
+POST IMPLEMENTATION TESTING:
+----------------------------
+
+BACKOUT PROCESS
+---------------
+Method for backing out changes: B
+a) Restore from backup
+b) Uninstall/undo implementation steps
+c) Other/None (explain below)
+Explanation: Revert retention period.
+
+CHANGE COORDINATOR(s) and CONTACT INFORMATION
+---------------------------------------------
+Andrew Ibarrientos Soltes
+Cell: +63 945 847 1710
+8x8: (312) 288-4823 | ext 714823
+
+AFTER HOURS SUPPORT
+-------------------
+Follow normal escalation procedure
+
+APPROVAL
+--------
+CCB

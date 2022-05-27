@@ -9,7 +9,7 @@ class DateTime:
     """class for time """
 
     @staticmethod
-    def show_current_time():
+    def show_current_time_pht():
         """show philippines local and current time"""
         ph_current_time = datetime.now(pytz.timezone('Asia/Manila'))
         pht = ph_current_time.strftime("%Y-%m-%d %H:%M:%S %Z")
@@ -34,7 +34,6 @@ class DateTime:
     @staticmethod
     def convert_to_underscore_format():
         """create an underscore date format example: 1992-11-30 ---> 1992_11_30"""
-        # input_date = GetArguments()
-        show_input_date = GetArguments.get_date()
-        formatted_date = show_input_date.replace("-","_")
+        args_input_date = GetArguments.get_date()
+        formatted_date = args_input_date.replace("-","_")
         return formatted_date
